@@ -19,7 +19,7 @@ const DetailsPanel = ({ pokemon }) => {
             <p><strong>Weight:</strong> {pokemon.weight}</p>
             <p><strong>Type:</strong> {pokemon.types.map(t => t.type.name).join(', ')}</p>
             
-            <h3>Abilities</h3>
+            <h3><strong>Abilities</strong></h3>
             <ul>
                 {pokemon.abilities.map((ability, index) => (
                     <li key={index}>

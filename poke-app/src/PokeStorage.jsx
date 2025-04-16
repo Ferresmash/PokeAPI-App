@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useImperativeHandle, forwardRef } from 'react';
 
-const PokeStorage = ({ onPokemonSelect}) => {
+const PokeStorage = forwardRef(({ onPokemonSelect }, ref) => {
     const [storedPokemon, setStoredPokemon] = useState([]);
 
     const addPokemon = (pokemon) => {
+
+        console.log('Adding Pokémon:', pokemon.name);
+        console.log('Stored Pokémon before:', storedPokemon);
+
         if (!storedPokemon.find((p) => p.name === pokemon.name)) {
             setStoredPokemon((prev) => [...prev, pokemon]);
         }
@@ -17,6 +21,11 @@ const PokeStorage = ({ onPokemonSelect}) => {
         onPokemonSelect(pokemon);
     };
 
+    // Expose the addPokemon function to the parent via ref
+    useImperativeHandle(ref, () => ({
+        addPokemon,
+    }));
+
     return (
         <div className="poke-storage">
             <h2>Stored Pokémon</h2>
@@ -24,7 +33,7 @@ const PokeStorage = ({ onPokemonSelect}) => {
                 {storedPokemon.map((pokemon) => (
                     <div key={pokemon.name} className="pokemon-item">
                         <img
-                            src={pokemon.icon}
+                            src={pokemon.sprites?.front_default}
                             alt={pokemon.name}
                             onClick={() => handlePokemonClick(pokemon)}
                         />
@@ -35,6 +44,6 @@ const PokeStorage = ({ onPokemonSelect}) => {
             </div>
         </div>
     );
-};
+});
 
 export default PokeStorage;
