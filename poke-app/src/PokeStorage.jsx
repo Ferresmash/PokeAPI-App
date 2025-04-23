@@ -21,11 +21,6 @@ const PokeStorage = forwardRef(({ onPokemonSelect }, ref) => {
         onPokemonSelect(pokemon);
     };
 
-    // Expose the addPokemon function to the parent via ref
-    useImperativeHandle(ref, () => ({
-        addPokemon,
-    }));
-
     return (
         <div className="poke-storage">
             <h2>Stored Pokémon</h2>

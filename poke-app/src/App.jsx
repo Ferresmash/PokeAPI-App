@@ -15,15 +15,16 @@ function App() {
 
     return (
         <>
-            <div className="max-h-screen h-screen flex flex-col bg-base-300 overflow-hidden">
-                <Header onPokemonSearch={handlePokemonSearch} />
-                <div className="flex flex-row">
-                <PokeStorage
-                    onPokemonSelect={(pokemon) => setCurrPokemon(pokemon)}
-                />
-                <DetailsPanel pokemon={currPokemon} />
+            <div className="flex flex-col overflow-auto bg-base-300 items-center  h-full w-full">
+                <div className="container flex flex-col overflow-hidden w-2/3">
+                    <Header onPokemonSearch={handlePokemonSearch} />
+                    <div className="flex flex-row bg-base-100 m-2 justify-between rounded-lg">
+                        <PokeStorage
+                            onPokemonSelect={(pokemon) => setCurrPokemon(pokemon)}
+                        />
+                        <DetailsPanel pokemon={currPokemon} />
+                    </div>
                 </div>
-
             </div>
         </>
     );
