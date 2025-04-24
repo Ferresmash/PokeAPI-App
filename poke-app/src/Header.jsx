@@ -26,8 +26,14 @@ const Header = ( {onPokemonSearch} ) => {
     return (
         <div className='bg-base-300 flex justify-between items-center p-4 pt-3 pb-0'>
             <article className="prose lg:prose-xl">
-            <h2 className="h2">PokeAPI</h2>
+            <img
+                src={"PokeAPI-logo.png"}
+                alt={"PokeAPI"}
+                style={{ width: '13rem', height: '5rem' }}
+            />
             </article>
+
+            
             <input className='input ml-4' placeholder="Search for pokémon!" onKeyUp={handleKeyPress} />
         </div>
     )
