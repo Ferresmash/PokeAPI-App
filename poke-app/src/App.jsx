@@ -1,12 +1,31 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './header';
 import PokeList from './PokeList';
 import DetailsPanel from './DetailsPanel';
 
 function App() {
-    const [currPokemon, setCurrPokemon] = useState(null);
-    const [pokeStorage, setPokeStorage] = useState([]);
+
+    const [pokeStorage, setPokeStorage] = useState(() => {
+        const saved = localStorage.getItem('pokeStorage');
+        return saved ? JSON.parse(saved) : [];
+    });
+    const [currPokemon, setCurrPokemon] = useState(() => {
+        const saved = localStorage.getItem('currPokemon');
+        return saved ? JSON.parse(saved) : null;
+    });
+
+    useEffect(() => {
+        localStorage.setItem('pokeStorage', JSON.stringify(pokeStorage));
+    }, [pokeStorage]);
+
+    useEffect(() => {
+        if (currPokemon) {
+            localStorage.setItem('currPokemon', JSON.stringify(currPokemon));
+        } else {
+            localStorage.removeItem('currPokemon');
+        }
+    }, [currPokemon]);
 
     const handlePokemonSearch = (pokemon) => {
         setCurrPokemon(pokemon);

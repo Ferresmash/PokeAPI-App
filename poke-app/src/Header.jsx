@@ -1,4 +1,5 @@
 import React from "react";
+import logo from './assets/PokeAPI-logo.png';
 
 const Header = ( {onPokemonSearch} ) => {
     
@@ -27,7 +28,7 @@ const Header = ( {onPokemonSearch} ) => {
         <div className='bg-base-300 flex justify-between items-center p-4 pt-3 pb-0'>
             <article className="prose lg:prose-xl">
             <img
-                src={"PokeAPI-logo.png"}
+                src={logo}
                 alt={"PokeAPI"}
                 style={{ width: '13rem', height: '5rem' }}
             />
