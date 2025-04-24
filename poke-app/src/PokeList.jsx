@@ -2,7 +2,7 @@ import React from 'react';
 
 const PokeList = ({ pokemons, onPokemonSelect, onPokemonRemove }) => {
     return (
-        <article className='prose lg:prose-xl m-2 ml-3 w-full'>
+        <article className='prose lg:prose-xl m-2 ml-3 w-full overflow-auto'>
             <h2 className='py-2'>Stored Pokémon</h2>
 
                 {[...pokemons].reverse().map((pokemon) => (
