@@ -106,10 +106,8 @@ const DetailsPanel = ({ pokemon }) => {
             </details>
 
 
-
-
             <h3>Cries:</h3>
-            <audio controls>
+            <audio controls key={pokemon.cries?.latest || 'no-cry'}>
                 <source src={pokemon.cries?.latest} type="audio/ogg" />
                 Your browser does not support the audio element.
             </audio>
