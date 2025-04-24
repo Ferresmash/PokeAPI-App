@@ -3,6 +3,7 @@ Technical assessment at PartyKungen
 
 # Install Dependencies
 
+cd poke-app
 npm install
 
 # Development Server:
